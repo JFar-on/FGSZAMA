@@ -1,0 +1,162 @@
+﻿@{
+    ViewData["Title"] = "Strona główna";
+}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/home.css">
+</head>
+
+<!-- Sekcja hero -->
+<div class="hero">
+    <div class="content">
+        <h1>FARGOL SZAMA</h1>
+        <p>Twoje ulubione posiłki w Katowicach – na wyciągnięcie ręki!</p>
+
+        <div class="container text-center mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card shadow">
+                        <img src="~/img/zdjęcia dań firmowe.png" class="card-img-top" alt="Menu">
+                        <div class="card-body">
+                            <p class="card-text">Poznaj nasze wyśmienite dania – od sałatek po obiady domowe!</p>
+                            <a href="#" class="btn btn-primary">Zobacz menu</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card shadow">
+                        <img src="~/img/zdjęcia dań firmowe 2.png" class="card-img-top" alt="Plany cateringowe">
+                        <div class="card-body">
+                            <p class="card-text">Dostosuj kaloryczność i wybierz plan idealny dla siebie.</p>
+                            <a href="#" class="btn btn-primary">Dowiedz się więcej</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card shadow">
+                        <img src="~/img/zdjęcia dań firmowe 3.png" class="card-img-top" alt="Cennik">
+                        <div class="card-body">
+                            <p class="card-text">Sprawdź nasze atrakcyjne ceny oraz specjalne promocje!</p>
+                            <a href="#" class="btn btn-primary">Zobacz cennik</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dlaczego warto -->
+<div class="section mt-5">
+    <div class="container">
+        <h2>Dlaczego warto?</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p>Zaufało nam już ponad <strong>10,000 klientów</strong>. Dołącz do grona osób, które cenią smaczne i zdrowe posiłki, przygotowane z najwyższą starannością.</p>
+                <p>Gwarantujemy:</p>
+                <ul>
+                    <li>Świeże składniki od lokalnych dostawców.</li>
+                    <li>Wygodę dzięki dostawie pod same drzwi.</li>
+                    <li>Dostosowanie planów do Twoich potrzeb.</li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="~/img/Logo_FARGOL2.png" alt="Dlaczego warto" style="width: 100%; max-width: 400px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Promocje -->
+<div class="section mt-5">
+    <div class="container">
+        <h2>Promocje</h2>
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <img src="~/img/Promocja -15.jpg" alt="Promocja dla studentów" style="width: 80%; max-width: 300px;">
+                <h4><br>Promocja dla studentów</h4>
+                <p>Otrzymaj <strong>15% zniżki</strong> na dowolny plan żywieniowy, okazując ważną legitymację studencką.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="~/img/Promocja -10.jpg" alt="Kod rabatowy" style="width: 100%; max-width: 300px;">
+                <h4><br>Zniżka z kodem</h4>
+                <p>Wpisz kod <strong>SMACZNIE10</strong> przy zamówieniu i ciesz się <strong>10% rabatem</strong>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+    <h2 class="text-center">FAQ - Najczęściej zadawane pytania</h2>
+    <div class="accordion mt-4" id="faqAccordion">
+        <!-- Pierwsze pytanie -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                    Jak działa nasza dostawa?
+                </button>
+            </h2>
+            <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Dostarczamy posiłki codziennie rano pod wskazany adres. Wszystkie potrawy są starannie zapakowane, aby zachować ich świeżość.</div>
+            </div>
+        </div>
+        <!-- Drugie pytanie -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                    Czy mogę zmienić mój plan żywieniowy w trakcie trwania umowy?
+                </button>
+            </h2>
+            <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Tak, możesz w każdej chwili zmodyfikować plan żywieniowy. Skontaktuj się z nami, aby dokonać zmian.</div>
+            </div>
+        </div>
+        <!-- Kolejne pytania -->
+        <!-- Dodaj tutaj kolejne pytania według tego samego schematu -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                    Jakie są opcje płatności?
+                </button>
+            </h2>
+            <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Akceptujemy płatności online (karta, BLIK) oraz przelewy tradycyjne.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+                    Czy oferujecie opcje wegańskie?
+                </button>
+            </h2>
+            <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                <div class="accordion-body"> Tak, nasze menu zawiera szeroki wybór posiłków wegańskich, które są pełnowartościowe i smaczne.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faq5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse5" aria-expanded="false" aria-controls="faqCollapse5">
+                    Jak skontaktować się z obsługą klienta?
+                </button>
+            </h2>
+            <div id="faqCollapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+                <div class="accordion-body"> Możesz do nas napisać maila na adres kontakt@fargolszama.pl lub zadzwonić pod numer 123-456-789.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

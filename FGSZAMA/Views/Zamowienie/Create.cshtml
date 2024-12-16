@@ -1,0 +1,74 @@
+﻿@model FGSZAMA.Models.ZamowienieViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Stwórz Zamówienie</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Zestaw:</label>
+                <select asp-for="WybranyZestaw" class="form-control">
+                    @foreach (var zestaw in Model.DostepneZestawy)
+                    {
+                        <option value="@zestaw">@zestaw</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Kaloryczność:</label>
+                <select asp-for="WybranaKalorycznosc" class="form-control">
+                    @foreach (var opcja in Model.OpcjeKalorycznosci)
+                    {
+                        <option value="@opcja.Kalorycznosc">
+                            @opcja.Kalorycznosc kcal - @opcja.Cena PLN/dzień
+                        </option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Data od:</label>
+                <input asp-for="DataOd" type="date" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Data do:</label>
+                <input asp-for="DataDo" type="date" class="form-control" />
+            </div>
+            <button  type="submit" class="btn btn-primary mt-2">Oblicz</button>
+        </form>
+    </div>
+</div>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+    {
+        <p class="text-danger">@error.ErrorMessage</p>
+    }
+}
+
+@if (Model.PodsumowanaCena > 0)
+{
+    <div class="mt-3">
+        <h4>Podsumowanie:</h4>
+        <p>Całkowita cena: <strong>@Model.PodsumowanaCena PLN</strong></p>
+    </div>
+}
+
+@if (ViewBag.Sukces != null)
+{
+    <div class="alert alert-success">@ViewBag.Sukces</div>
+}
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

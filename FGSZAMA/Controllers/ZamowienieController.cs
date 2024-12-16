@@ -1,0 +1,186 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using FGSZAMA.Data;
+using FGSZAMA.Models;
+
+namespace FGSZAMA
+{
+    public class ZamowienieController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public ZamowienieController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Zamowienie
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.ZamowienieModel.ToListAsync());
+        }
+
+        // GET: Zamowienie/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var zamowienieModel = await _context.ZamowienieModel
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (zamowienieModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(zamowienieModel);
+        }
+
+        // GET: Zamowienie/Create
+        public IActionResult Create()
+        {
+            var model = new ZamowienieViewModel();
+
+            return View(model);
+        }
+
+        // POST: Zamowienie/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("Id,Zestaw,Kalorycznosc,CenaZaDzien,DataOd,DataDo,SumaCeny")] ZamowienieViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine($"Error: {error.ErrorMessage}");
+                }
+                // Pobranie ceny na podstawie wybranej kaloryczności
+                var cenaZaDzien = model.OpcjeKalorycznosci
+                    .FirstOrDefault(k => k.Kalorycznosc == model.WybranaKalorycznosc)?.Cena ?? 0;
+
+                // Obliczenie liczby dni
+                var liczbaDni = (model.DataDo - model.DataOd).Days + 1;
+
+                // Obliczenie sumy ceny
+                model.PodsumowanaCena = liczbaDni * cenaZaDzien;
+                // Możliwość zapisu do bazy(zależne od Entity Framework)
+
+                var zamowienie = new ZamowienieModel
+                {
+                    Zestaw = model.WybranyZestaw,
+                    Kalorycznosc = model.WybranaKalorycznosc,
+                    CenaZaDzien = cenaZaDzien,
+                    DataOd = model.DataOd,
+                    DataDo = model.DataDo,
+                    SumaCeny = model.PodsumowanaCena
+                };
+                _context.ZamowienieModel.Add(zamowienie);
+                _context.SaveChanges();
+
+
+                ViewBag.Sukces = "Zamówienie zostało poprawnie stworzone!";
+            }
+            return View(model);
+        }
+
+        // GET: Zamowienie/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var zamowienieModel = await _context.ZamowienieModel.FindAsync(id);
+            if (zamowienieModel == null)
+            {
+                return NotFound();
+            }
+            return View(zamowienieModel);
+        }
+
+        // POST: Zamowienie/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Zestaw,Kalorycznosc,CenaZaDzien,DataOd,DataDo,SumaCeny")] ZamowienieModel zamowienieModel)
+        {
+            if (id != zamowienieModel.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(zamowienieModel);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ZamowienieModelExists(zamowienieModel.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(zamowienieModel);
+        }
+
+        // GET: Zamowienie/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var zamowienieModel = await _context.ZamowienieModel
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (zamowienieModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(zamowienieModel);
+        }
+
+        // POST: Zamowienie/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var zamowienieModel = await _context.ZamowienieModel.FindAsync(id);
+            if (zamowienieModel != null)
+            {
+                _context.ZamowienieModel.Remove(zamowienieModel);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool ZamowienieModelExists(int id)
+        {
+            return _context.ZamowienieModel.Any(e => e.Id == id);
+        }
+    }
+}
