@@ -8,19 +8,20 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label>Zestaw:</label>
+                <label asp-for="WybranyZestaw" class="control-label">Zestaw:</label>
                 <select asp-for="WybranyZestaw" class="form-control">
                     @foreach (var zestaw in Model.DostepneZestawy)
                     {
                         <option value="@zestaw">@zestaw</option>
                     }
                 </select>
+                <span asp-validation-for="WybranyZestaw" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Kaloryczność:</label>
+                <label asp-for="WybranaKalorycznosc" class="control-label">Kaloryczność:</label>
                 <select asp-for="WybranaKalorycznosc" class="form-control">
                     @foreach (var opcja in Model.OpcjeKalorycznosci)
                     {
@@ -29,16 +30,19 @@
                         </option>
                     }
                 </select>
+                <span asp-validation-for="WybranaKalorycznosc" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Data od:</label>
+                <label asp-for="DataOd" class="control-label">Data od:</label>
                 <input asp-for="DataOd" type="date" class="form-control" />
+                <span asp-validation-for="DataOd" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label>Data do:</label>
+                <label asp-for="DataDo" class="control-label">Data do:</label>
                 <input asp-for="DataDo" type="date" class="form-control" />
+                <span asp-validation-for="DataDo" class="text-danger"></span>
             </div>
-            <button  type="submit" class="btn btn-primary mt-2">Oblicz</button>
+            <button type="submit" class="btn btn-primary mt-2">Oblicz</button>
         </form>
     </div>
 </div>
@@ -64,11 +68,12 @@
     <div class="alert alert-success">@ViewBag.Sukces</div>
 }
 
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
