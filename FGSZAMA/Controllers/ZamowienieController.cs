@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FGSZAMA.Data;
 using FGSZAMA.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FGSZAMA
 {
+    [Authorize]
     public class ZamowienieController : Controller
     {
         private readonly ApplicationDbContext _context;
