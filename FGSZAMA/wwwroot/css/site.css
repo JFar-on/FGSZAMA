@@ -18,8 +18,45 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    padding-top: 70px; /* Dostosuj wartoœæ w zale¿noœci od wysokoœci navbara */
 }
+
+/* Styl dla rozwijanego bocznego paska */
+.offcanvas-dark {
+    background-color: #343a40; /* Ciemne t³o */
+    color: white; /* Bia³y tekst */
+}
+
+    .offcanvas-dark .offcanvas-header {
+        border-bottom: 1px solid #495057; /* Ciemniejsza linia oddzielaj¹ca nag³ówek */
+    }
+
+    .offcanvas-dark .offcanvas-body {
+        background-color: #343a40; /* Ciemne t³o dla cia³a */
+    }
+
+    .offcanvas-dark .nav-link {
+        color: white; /* Bia³y tekst dla linków */
+    }
+
+        .offcanvas-dark .nav-link:hover {
+            color: #adb5bd; /* Jaœniejszy kolor tekstu po najechaniu */
+        }
+
+    .offcanvas-dark .dropdown-menu {
+        background-color: #343a40; /* Ciemne t³o dla menu rozwijanego */
+        color: white; /* Bia³y tekst dla menu rozwijanego */
+    }
+
+    .offcanvas-dark .dropdown-item {
+        color: white; /* Bia³y tekst dla elementów menu rozwijanego */
+    }
+
+        .offcanvas-dark .dropdown-item:hover {
+            background-color: #495057; /* Ciemniejsze t³o po najechaniu */
+            color: white; /* Bia³y tekst po najechaniu */
+        }
 
 
 
