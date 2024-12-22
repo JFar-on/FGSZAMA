@@ -3,12 +3,17 @@
 @{
     ViewData["Title"] = "Index";
 }
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/zamowienie_index.css">
+</head>
 
 <h1>Index</h1>
-<link rel="stylesheet" href="~/css/zamowienie.css">
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -55,11 +60,16 @@
                 @Html.DisplayFor(modelItem => item.SumaCeny)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a type="button" class="btn btn-warning"asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a type="button" class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                <a type="button" class="btn btn-warning" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<p> </p>
+<p class="center-button">
+    <a type="button" class="btn btn-warning" asp-action="Create">Create New</a>
+</p>

@@ -1,0 +1,65 @@
+﻿/* Styl ogólny */
+body {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+}
+
+/* Nagłówki */
+h1 {
+    color: #e67e22;
+    text-align: center;
+}
+
+/* Szczegóły zamówienia */
+dl.row {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+dl dt {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+dl dd {
+    color: #f5f5f5;
+    margin-left: 0; /* Wyłączenie domyślnego wcięcia */
+}
+
+/* Przyciski akcji */
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #2980b9;
+    }
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-secondary:hover {
+        background-color: #7f8c8d;
+    }
+
+/* Linki w przyciskach */
+a {
+    text-decoration: none;
+    color: inherit;
+}

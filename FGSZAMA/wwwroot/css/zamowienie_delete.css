@@ -1,0 +1,62 @@
+﻿/* Styl ogólny */
+body {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+}
+
+/* Nagłówki */
+h1, h3 {
+    color: #e67e22;
+    text-align: center;
+}
+
+/* Sekcja szczegółów */
+dl.row {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+dl dt {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+dl dd {
+    color: #f5f5f5;
+    margin-left: 0; /* Wyłączenie domyślnego wcięcia */
+}
+
+/* Formularz */
+form {
+    margin-top: 20px;
+}
+
+    form input[type="submit"] {
+        background-color: #e74c3c;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+        form input[type="submit"]:hover {
+            background-color: #c0392b;
+        }
+
+    /* Link powrotu */
+    form a {
+        color: #e67e22;
+        text-decoration: none;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+        form a:hover {
+            text-decoration: underline;
+        }

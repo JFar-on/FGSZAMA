@@ -1,0 +1,86 @@
+﻿/* Styl ogólny */
+body {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+}
+
+/* Nagłówki */
+h1 {
+    color: #e67e22;
+    text-align: center;
+}
+
+/* Kontener formularza */
+.form-container {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Etykiety */
+label {
+    color: #e67e22;
+}
+
+/* Pola formularza */
+.form-control {
+    background-color: #444;
+    color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+}
+
+    .form-control:focus {
+        background-color: #555;
+        outline: none;
+        box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+    }
+
+/* Walidacja */
+.text-danger {
+    color: #e74c3c;
+}
+
+/* Przyciski */
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background-color: #2980b9;
+    }
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-secondary:hover {
+        background-color: #7f8c8d;
+    }
+
+/* Linki w przyciskach */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Centrowanie formularza */
+.row {
+    margin-top: 50px;
+}
+
+message.txt
+4 KB

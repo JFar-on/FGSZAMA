@@ -3,8 +3,14 @@
 @{
     ViewData["Title"] = "Create";
 }
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/zamowienie_create.css">
+</head>
 
-<h2>Stwórz Zamówienie</h2>
 
 <div class="row">
     <div class="col-md-4">
@@ -42,10 +48,12 @@
                 <input asp-for="DataDo" type="date" class="form-control" />
                 <span asp-validation-for="DataDo" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Oblicz</button>
+            <button type="submit" class="btn btn-outline-warning">Zatwierdź</button>
+            <a href="https://localhost:7019/Zamowienie" type="button" class="btn btn-outline-warning">Powrót</a>
         </form>
     </div>
 </div>
+
 
 @if (!ViewData.ModelState.IsValid)
 {
@@ -68,9 +76,7 @@
     <div class="alert alert-success">@ViewBag.Sukces</div>
 }
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{
