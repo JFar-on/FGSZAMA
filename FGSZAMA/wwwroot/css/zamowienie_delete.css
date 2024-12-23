@@ -60,3 +60,12 @@ form {
         form a:hover {
             text-decoration: underline;
         }
+
+h3
+{
+    color: red;
+}
+
+.delete-button{
+    color: red
+}

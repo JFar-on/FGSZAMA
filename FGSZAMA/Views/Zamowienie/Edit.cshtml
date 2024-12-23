@@ -11,10 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/zamowienie_edit.css">
 </head>
-
-<h1>Edit</h1>
-
-<h4>ZamowienieModel</h4>
+<h4>Edytuj zamówienie</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -51,17 +48,20 @@
                 <input asp-for="SumaCeny" class="form-control" />
                 <span asp-validation-for="SumaCeny" class="text-danger"></span>
             </div>
+            <p> </p>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="submit" class="btn btn-outline-warning">Zatwierdź</button> 
+                <a href="https://localhost:7019/Zamowienie" type="button" class="btn btn-outline-warning">Powrót</a>
             </div>
+            <p> </p>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

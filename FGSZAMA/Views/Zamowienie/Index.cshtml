@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/css/zamowienie_index.css">
 </head>
 
-<h1>Index</h1>
+<h1>Twoje Plany</h1>
 
 
 <table class="table">
@@ -60,9 +60,9 @@
                 @Html.DisplayFor(modelItem => item.SumaCeny)
             </td>
             <td>
-                <a type="button" class="btn btn-warning"asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
-                <a type="button" class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Details</a> 
-                <a type="button" class="btn btn-warning" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a type="button" class="btn btn-warning"asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> 
+                <a type="button" class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> 
+                <a type="button" class="btn btn-warning" asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
             </td>
         </tr>
 }
@@ -71,5 +71,5 @@
 
 <p> </p>
 <p class="center-button">
-    <a type="button" class="btn btn-warning" asp-action="Create">Create New</a>
+    <a type="button" class="btn btn-warning" asp-action="Create">Dodaj zamówienie</a>
 </p>
