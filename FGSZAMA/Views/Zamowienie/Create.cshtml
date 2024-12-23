@@ -40,12 +40,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="DataOd" class="control-label">Data od:</label>
-                <input asp-for="DataOd" type="date" class="form-control" />
+                <input asp-for="DataOd" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
                 <span asp-validation-for="DataOd" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataDo" class="control-label">Data do:</label>
-                <input asp-for="DataDo" type="date" class="form-control" />
+                <input asp-for="DataDo" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" class="form-control" />
                 <span asp-validation-for="DataDo" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-outline-warning">Zatwierdź</button>

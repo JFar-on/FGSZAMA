@@ -59,6 +59,10 @@ namespace FGSZAMA
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Id,WybranyZestaw,WybranaKalorycznosc,DataOd,DataDo")] ZamowienieViewModel model)
         {
+            if (model.DataOd < DateTime.Today || model.DataDo < DateTime.Today)
+            {
+                ModelState.AddModelError(string.Empty, "Data nie może być wcześniejsza niż dzisiejsza.");
+            }
             if (ModelState.IsValid)
             {
                 // Pobranie ceny na podstawie wybranej kaloryczności
