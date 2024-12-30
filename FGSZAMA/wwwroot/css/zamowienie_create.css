@@ -1,9 +1,12 @@
 ﻿/* Ogólne stylowanie */
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0px;
+    margin: 0;
     background-color: #1e1e1e;
     color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Formularz zamówienia */
@@ -11,6 +14,7 @@ body {
     display: flex;
     justify-content: center;
     padding: 50px 20px;
+    flex: 1; /* Dodaj to, aby wypełnić dostępne miejsce */
 }
 
 .col-md-4 {
@@ -25,31 +29,35 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-    form .form-group {
-        margin-bottom: 20px;
-    }
+form .form-group {
+    margin-bottom: 20px;
+}
 
-    form label {
-        display: block;
-        margin-bottom: 8px;
-        color: #e67e22;
-        font-size: 1rem;
-    }      
+form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #e67e22;
+    font-size: 1rem;
+}
 
-    /* Przycisk formularza */
-    form button {
-        display: block;
-        width: 100%;
-        background-color: #e67e22;
-        color: #fff;
-        padding: 10px 20px;
-        font-size: 1.2rem;
-        border: none;
-        border-radius: 5px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }     
+/* Przycisk formularza */
+form button {
+    display: block;
+    width: 100%;
+    background-color: #e67e22;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #d35400; /* Dodaj efekt hover dla przycisku */
+}
 
 /* Walidacja */
 .text-danger {
@@ -66,13 +74,37 @@ a {
     font-size: 1rem;
 }
 
+a:hover {
+    color: #d35400; /* Dodaj efekt hover dla linku */
+}
+
+/* Stylowanie stopki */
+footer {
+    background-color: #333;
+    color: #f5f5f5;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #444;
+    margin-top: auto; /* Dodaj to, aby stopka była na dole strony */
+}
+
+footer a {
+    color: #e67e22;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
 /* Responsywność */
 @media (max-width: 768px) {
     form button {
         font-size: 1rem;
     }
+    footer {
+        padding: 15px 0;
+    }
 }
-
-   
-
-

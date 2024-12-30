@@ -1,6 +1,6 @@
 ﻿/* Tło całej strony */
 body {
-    background-color: #121212; /* Ciemne tło */
+    background-color: #1e1e1e; /* Ciemne tło */
     color: #f5f5f5; /* Jasny kolor tekstu */
     margin: 0;
     font-family: Arial, sans-serif;
@@ -8,17 +8,13 @@ body {
 
 /* Nagłówek strony */
 .cennik-header {
-    background-color: #1e1e1e;
-    color: #ffa500;
-    text-align: center;
-    padding: 20px 0;
+
+    font-family: 'Arial', sans-serif;
+    text-align: center; 
+    background-color: #1e1e1e; /* Ciemne tło */
+    color: #f5f5f5; /* Jasny tekst */
 }
 
-.cennik-subtitle {
-    color: #f5f5f5;
-    font-size: 1.2rem;
-    margin-top: 5px;
-}
 
 /* Główna sekcja */
 .cennik-main {

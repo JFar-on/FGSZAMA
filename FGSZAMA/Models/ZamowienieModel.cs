@@ -21,5 +21,7 @@ namespace FGSZAMA.Models
         public DateTime DataDo { get; set; }
         
         public decimal SumaCeny { get; set; } // Podliczona cena
+
+
     }
 }
