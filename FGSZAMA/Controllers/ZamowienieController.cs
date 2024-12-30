@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FGSZAMA.Data;
 using FGSZAMA.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace FGSZAMA
 {
@@ -15,16 +16,33 @@ namespace FGSZAMA
     public class ZamowienieController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public ZamowienieController(ApplicationDbContext context)
+
+        public ZamowienieController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Zamowienie
         public async Task<IActionResult> Index()
         {
+
+            var user = await _userManager.GetUserAsync(User);
+            var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+
+            if (isAdmin)
+            {
             return View(await _context.ZamowienieModel.ToListAsync());
+                
+            }
+            else
+            {
+                var userId = _userManager.GetUserId(User);
+                var userOrders = await _context.ZamowienieModel.Where(z => z.UserId == userId).ToListAsync();
+                return View(userOrders);
+            }
         }
 
         // GET: Zamowienie/Details/5
@@ -57,7 +75,7 @@ namespace FGSZAMA
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,WybranyZestaw,WybranaKalorycznosc,DataOd,DataDo")] ZamowienieViewModel model)
+        public async Task<IActionResult> Create([Bind("Id,WybranyZestaw,WybranaKalorycznosc,DataOd,DataDo")] ZamowienieViewModel model)
         {
             if (model.DataOd < DateTime.Today || model.DataDo < DateTime.Today)
             {
@@ -65,6 +83,9 @@ namespace FGSZAMA
             }
             if (ModelState.IsValid)
             {
+                var user = await _userManager.GetUserAsync(User);
+                var userId = _userManager.GetUserId(User);
+
                 // Pobranie ceny na podstawie wybranej kaloryczności
                 var cenaZaDzien = model.OpcjeKalorycznosci
                     .FirstOrDefault(k => k.Kalorycznosc == model.WybranaKalorycznosc)?.Cena ?? 0;
@@ -83,7 +104,8 @@ namespace FGSZAMA
                     CenaZaDzien = cenaZaDzien,
                     DataOd = model.DataOd,
                     DataDo = model.DataDo,
-                    SumaCeny = model.PodsumowanaCena
+                    SumaCeny = model.PodsumowanaCena,
+                    UserId = userId // Przypisz UserId
                 };
 
                 // Zapis do bazy danych

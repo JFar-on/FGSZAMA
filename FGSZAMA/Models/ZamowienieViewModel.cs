@@ -25,6 +25,7 @@ namespace FGSZAMA.Models
 
         public List<string> DostepneZestawy { get; set; } = new List<string> { "Zestaw Turbo", "Zestaw Pomidor", "Zestaw Drwala", "Zestaw FitBox","Zestaw Ognisty","Zestaw Komfort","Zestaw Leśny" };
 
+        
         public List<KalorycznoscOpcja> OpcjeKalorycznosci { get; set; } = new List<KalorycznoscOpcja>
             {
                 new KalorycznoscOpcja { Kalorycznosc = 1500, Cena = 45 },

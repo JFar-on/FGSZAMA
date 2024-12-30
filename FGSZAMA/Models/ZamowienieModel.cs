@@ -22,6 +22,6 @@ namespace FGSZAMA.Models
         
         public decimal SumaCeny { get; set; } // Podliczona cena
 
-
+        public string UserId { get; set; }
     }
 }

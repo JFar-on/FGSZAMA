@@ -23,6 +23,9 @@
             <th>Od</th>
             <th>Do</th>
             <th>Razem (zł)</th>
+            <th>
+                Email Użytkownika 
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -46,6 +49,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.SumaCeny)
             </td>
+                <td>
+                    @item.UserId.ToString()
+                </td>
             <td>
                 <a type="button" class="btn btn-warning"asp-action="Edit" asp-route-id="@item.Id">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
