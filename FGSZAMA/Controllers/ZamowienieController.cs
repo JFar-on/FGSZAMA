@@ -29,20 +29,11 @@ namespace FGSZAMA
         public async Task<IActionResult> Index()
         {
 
-            var user = await _userManager.GetUserAsync(User);
-            var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
-
-            if (isAdmin)
-            {
-            return View(await _context.ZamowienieModel.ToListAsync());
-                
-            }
-            else
-            {
+            
                 var userId = _userManager.GetUserId(User);
                 var userOrders = await _context.ZamowienieModel.Where(z => z.UserId == userId).ToListAsync();
                 return View(userOrders);
-            }
+            
         }
 
         // GET: Zamowienie/Details/5
@@ -105,7 +96,7 @@ namespace FGSZAMA
                     DataOd = model.DataOd,
                     DataDo = model.DataDo,
                     SumaCeny = model.PodsumowanaCena,
-                    UserId = userId // Przypisz UserId
+                    UserId = userId 
                 };
 
                 // Zapis do bazy danych
