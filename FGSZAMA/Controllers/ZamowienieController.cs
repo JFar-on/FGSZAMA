@@ -109,27 +109,6 @@ namespace FGSZAMA
 
             return View(model);
         }
-
-        // GET: Zamowienie/Edit/5
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var zamowienieModel = await _context.ZamowienieModel.FindAsync(id);
-            if (zamowienieModel == null)
-            {
-                return NotFound();
-            }
-            return View(zamowienieModel);
-        }
-
-        // POST: Zamowienie/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     
 
         // GET: Zamowienie/Delete/5
