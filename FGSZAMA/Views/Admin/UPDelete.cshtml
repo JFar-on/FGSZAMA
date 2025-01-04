@@ -1,0 +1,53 @@
+﻿@{
+}
+@model FGSZAMA.Models.UżytkownikViewModel
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/zamowienie_delete.css">
+</head>
+<body>
+    <h1>Usuń Użytkownika</h1>
+
+    <div>
+        <h4>Usunięcie użytkownika spowoduje trwałe skasowanie jego konta z serwisu Fargol Szama</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                Id
+            </dt>
+            <dd class="col-sm-10">
+                @Model.Id
+            </dd>
+            <dt class="col-sm-2">
+                Email
+            </dt>
+            <dd class="col-sm-10">
+                @Model.Email
+            </dd>
+            <dt class="col-sm-2">
+                Imię
+            </dt>
+            <dd class="col-sm-10">
+                @Model.FirstName
+            </dd>
+            <dt class="col-sm-2">
+                Nazwisko
+            </dt>
+            <dd class="col-sm-10">
+                @Model.LastName
+            </dd>
+        </dl>
+        <h5>Czy jesteś pewny że chcesz to zrobić?</h5>
+
+        <form asp-action="UPDelete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Tak - Usuń" class="btn btn-danger" />
+            <a asp-action="UzytkownikPanel" class="btn btn-secondary">Anuluj</a>
+        </form>
+    </div>
+</body>
+</html>

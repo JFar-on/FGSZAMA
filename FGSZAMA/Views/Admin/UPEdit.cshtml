@@ -1,0 +1,45 @@
+﻿@model FGSZAMA.Models.UżytkownikViewModel
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/zamowienie_edit.css">
+</head>
+<body>
+    <h1>Użytkownik - @Model.Email - Informacje dodatkowe</h1>
+
+    <form asp-action="UPEdit">
+        <div class="form-group">
+            <label asp-for="Id" class="control-label"></label>
+            <p class="form-control-static">@Model.Id</p>
+            <input type="hidden" asp-for="Id" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <p class="form-control-static">@Model.Email</p>
+            <input type="hidden" asp-for="Email" />
+        </div>
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-label">Imię</label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label">Nazwisko</label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label">Opis</label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Zapisz" class="btn btn-warning" />
+            <a asp-action="UzytkownikPanel" class="btn btn-secondary">Anuluj</a>
+        </div>
+    </form>
+</body>
+</html>
