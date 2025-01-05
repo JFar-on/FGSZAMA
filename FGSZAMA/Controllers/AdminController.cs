@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics.Metrics;
 using FGSZAMA.Services;
+using Microsoft.Data.SqlClient;
 
 
 namespace FGSZAMA.Controllers
@@ -270,11 +271,53 @@ namespace FGSZAMA.Controllers
 
         //-------------------------------------------------------------------------------------
 
-        public async Task<IActionResult> Aktywność()
+        public async Task<IActionResult> Aktywność(string sortOrder, string searchString)
         {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
             var aktywności = await _aktywnośćService.GetAktywnościAsync();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                aktywności = aktywności.Where(a => a.NazwaUżytkownika.Contains(searchString)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    aktywności = aktywności.OrderByDescending(a => a.NazwaUżytkownika).ToList();
+                    break;
+                case "Date":
+                    aktywności = aktywności.OrderBy(a => a.DataAktywności).ToList();
+                    break;
+                case "date_desc":
+                    aktywności = aktywności.OrderByDescending(a => a.DataAktywności).ToList();
+                    break;
+                default:
+                    aktywności = aktywności.OrderBy(a => a.NazwaUżytkownika).ToList();
+                    break;
+            }
+
             return View(aktywności);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteAktywność(int id)
+        {
+            await _aktywnośćService.DeleteAktywnośćAsync(id);
+            return RedirectToAction(nameof(Aktywność));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> MarkAsRead(int id)
+        {
+            await _aktywnośćService.MarkAsReadAsync(id);
+            return RedirectToAction(nameof(Aktywność));
+        }
+
+
     }
 
     public class OrderViewModel
