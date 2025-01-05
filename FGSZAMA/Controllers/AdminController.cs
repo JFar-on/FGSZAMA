@@ -265,6 +265,20 @@ namespace FGSZAMA.Controllers
             return RedirectToAction(nameof(UzytkownikPanel));
         }
 
+
+        //-----------------------------------------------------------------------  
+
+        public IActionResult UserActivity()
+        {
+            var activities = new List<UserActivityViewModel>
+            {
+                new UserActivityViewModel { Id = 1, UserName = "user1", ActivityDate = DateTime.Now, ActivityType = "Login", Description = "User logged in" },
+                new UserActivityViewModel { Id = 2, UserName = "user2", ActivityDate = DateTime.Now, ActivityType = "Update", Description = "User updated profile" }
+            };
+
+            return View(activities);
+        }
+
     }
         public class OrderViewModel
         {
