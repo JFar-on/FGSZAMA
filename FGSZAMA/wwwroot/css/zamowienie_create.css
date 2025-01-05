@@ -1,15 +1,4 @@
-﻿/* Ogólne stylowanie */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    background-color: #1e1e1e;
-    color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* Formularz zamówienia */
+﻿/* Formularz zamówienia */
 .row {
     display: flex;
     justify-content: center;
@@ -78,26 +67,6 @@ a:hover {
     color: #d35400; /* Dodaj efekt hover dla linku */
 }
 
-/* Stylowanie stopki */
-footer {
-    background-color: #333;
-    color: #f5f5f5;
-    padding: 20px 0;
-    text-align: center;
-    border-top: 1px solid #444;
-    margin-top: auto; /* Dodaj to, aby stopka była na dole strony */
-}
-
-footer a {
-    color: #e67e22;
-    text-decoration: none;
-    font-size: 1rem;
-}
-
-footer a:hover {
-    color: #fff;
-    text-decoration: underline;
-}
 
 /* Responsywność */
 @media (max-width: 768px) {
