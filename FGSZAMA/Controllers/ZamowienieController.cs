@@ -9,6 +9,7 @@ using FGSZAMA.Data;
 using FGSZAMA.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using FGSZAMA.Services;
 
 namespace FGSZAMA
 {
@@ -17,12 +18,14 @@ namespace FGSZAMA
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly AktywnośćService _aktywnośćService;
 
 
-        public ZamowienieController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public ZamowienieController(ApplicationDbContext context, UserManager<IdentityUser> userManager, AktywnośćService aktywnośćService)
         {
             _context = context;
             _userManager = userManager;
+            _aktywnośćService = aktywnośćService;
         }
 
         // GET: Zamowienie
@@ -103,8 +106,18 @@ namespace FGSZAMA
                 _context.ZamowienieModel.Add(zamowienie);
                 _context.SaveChanges();
 
+                await _aktywnośćService.AddAktywnośćAsync(new AktywnośćModel
+                {
+                    NazwaUżytkownika = user.UserName,
+                    DataAktywności = DateTime.Now,
+                    TypAktywności = "Zamówienia",
+                    Opis = "Użytkownik złożył nowe zamówienie."
+                });
+
                 ViewBag.Sukces = "Zamówienie zostało poprawnie stworzone!";
                 return RedirectToAction(nameof(Index));
+
+
             }
 
             return View(model);
@@ -138,9 +151,18 @@ namespace FGSZAMA
             if (zamowienieModel != null)
             {
                 _context.ZamowienieModel.Remove(zamowienieModel);
+                await _context.SaveChangesAsync();
+
+                var user = await _userManager.FindByIdAsync(zamowienieModel.UserId);
+                await _aktywnośćService.AddAktywnośćAsync(new AktywnośćModel
+                {
+                    NazwaUżytkownika = user.UserName,
+                    DataAktywności = DateTime.Now,
+                    TypAktywności = "Zamówienia",
+                    Opis = "Użytkownik usunął zamówienie."
+                });
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

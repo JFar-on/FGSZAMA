@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics.Metrics;
+using FGSZAMA.Services;
 
 
 namespace FGSZAMA.Controllers
@@ -17,11 +18,13 @@ namespace FGSZAMA.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly AktywnośćService _aktywnośćService;
 
-        public AdminController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public AdminController(ApplicationDbContext context, UserManager<IdentityUser> userManager,AktywnośćService aktywnośćService)
         {
             _context = context;
             _userManager = userManager;
+            _aktywnośćService = aktywnośćService;
         }
 
         public IActionResult Index()
@@ -81,7 +84,7 @@ namespace FGSZAMA.Controllers
             return View(viewModel);
         }
 
-     
+
         // GET: Admin/Delete/5
         public async Task<IActionResult> ZPDelete(int? id)
         {
@@ -186,7 +189,7 @@ namespace FGSZAMA.Controllers
 
         // POST: Admin/EditUser/5
         [HttpPost]
-        public async Task<IActionResult>UPEdit(UżytkownikViewModel model)
+        public async Task<IActionResult> UPEdit(UżytkownikViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -265,31 +268,25 @@ namespace FGSZAMA.Controllers
             return RedirectToAction(nameof(UzytkownikPanel));
         }
 
+        //-------------------------------------------------------------------------------------
 
-        //-----------------------------------------------------------------------  
-
-        public IActionResult UserActivity()
+        public async Task<IActionResult> Aktywność()
         {
-            var activities = new List<UserActivityViewModel>
-            {
-                new UserActivityViewModel { Id = 1, UserName = "user1", ActivityDate = DateTime.Now, ActivityType = "Login", Description = "User logged in" },
-                new UserActivityViewModel { Id = 2, UserName = "user2", ActivityDate = DateTime.Now, ActivityType = "Update", Description = "User updated profile" }
-            };
-
-            return View(activities);
+            var aktywności = await _aktywnośćService.GetAktywnościAsync();
+            return View(aktywności);
         }
-
     }
-        public class OrderViewModel
-        {
-            public int Id { get; set; }
-            public string UserEmail { get; set; }
-            public string Zestaw { get; set; }
-            public int Kalorycznosc { get; set; }
-            public decimal CenaZaDzien { get; set; }
-            public DateTime DataOd { get; set; }
-            public DateTime DataDo { get; set; }
-            public decimal SumaCeny { get; set; }
-        }
-    
+
+    public class OrderViewModel
+    {
+        public int Id { get; set; }
+        public string UserEmail { get; set; }
+        public string Zestaw { get; set; }
+        public int Kalorycznosc { get; set; }
+        public decimal CenaZaDzien { get; set; }
+        public DateTime DataOd { get; set; }
+        public DateTime DataDo { get; set; }
+        public decimal SumaCeny { get; set; }
+    }
 }
+

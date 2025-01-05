@@ -1,4 +1,5 @@
 using FGSZAMA.Data;
+using FGSZAMA.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +21,7 @@ namespace FGSZAMA
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<AktywnoœæService>();
 
             var app = builder.Build();
 

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FGSZAMA.Models.AktywnośćModel>
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/zamowienie_index.css">
+</head>
+<body>
+    <h1>Panel Administratora - Aktywność Użytkowników</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nazwa Użytkownika</th>
+                <th>Data Aktywności</th>
+                <th>Typ Aktywności</th>
+                <th>Opis</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var aktywność in Model)
+            {
+                <tr>
+                    <td>@aktywność.Id</td>
+                    <td>@aktywność.NazwaUżytkownika</td>
+                    <td>@aktywność.DataAktywności</td>
+                    <td>@aktywność.TypAktywności</td>
+                    <td>@aktywność.Opis</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+

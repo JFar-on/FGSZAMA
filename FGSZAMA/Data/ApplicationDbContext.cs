@@ -11,5 +11,6 @@ namespace FGSZAMA.Data
         {
         }
         public DbSet<FGSZAMA.Models.ZamowienieModel> ZamowienieModel { get; set; } = default!;
+        public DbSet<AktywnośćModel> Aktywności{ get; set; }
     }
 }

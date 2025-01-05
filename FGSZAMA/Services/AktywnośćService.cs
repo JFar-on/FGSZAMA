@@ -1,0 +1,28 @@
+﻿using FGSZAMA.Data;
+using FGSZAMA.Models;
+using Microsoft.EntityFrameworkCore;
+
+
+namespace FGSZAMA.Services
+{
+    public class AktywnośćService
+    {
+        private readonly ApplicationDbContext _context;
+
+        public AktywnośćService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<List<AktywnośćModel>> GetAktywnościAsync()
+        {
+            return await _context.Aktywności.ToListAsync();
+        }
+
+        public async Task AddAktywnośćAsync(AktywnośćModel aktywność)
+        {
+            _context.Aktywności.Add(aktywność);
+            await _context.SaveChangesAsync();
+        }
+    }
+}
