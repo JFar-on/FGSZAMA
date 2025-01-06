@@ -18,10 +18,10 @@ namespace FGSZAMA
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly AktywnośćService _aktywnośćService;
+        private readonly AktywnoscService _aktywnośćService;
 
 
-        public ZamowienieController(ApplicationDbContext context, UserManager<IdentityUser> userManager, AktywnośćService aktywnośćService)
+        public ZamowienieController(ApplicationDbContext context, UserManager<IdentityUser> userManager, AktywnoscService aktywnośćService)
         {
             _context = context;
             _userManager = userManager;
@@ -106,7 +106,7 @@ namespace FGSZAMA
                 _context.ZamowienieModel.Add(zamowienie);
                 _context.SaveChanges();
 
-                await _aktywnośćService.AddAktywnośćAsync(new AktywnośćModel
+                await _aktywnośćService.AddAktywnośćAsync(new AktywnoscModel
                 {
                     NazwaUżytkownika = user.UserName,
                     DataAktywności = DateTime.Now,
@@ -154,7 +154,7 @@ namespace FGSZAMA
                 await _context.SaveChangesAsync();
 
                 var user = await _userManager.FindByIdAsync(zamowienieModel.UserId);
-                await _aktywnośćService.AddAktywnośćAsync(new AktywnośćModel
+                await _aktywnośćService.AddAktywnośćAsync(new AktywnoscModel
                 {
                     NazwaUżytkownika = user.UserName,
                     DataAktywności = DateTime.Now,

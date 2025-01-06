@@ -5,21 +5,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FGSZAMA.Services
 {
-    public class AktywnośćService
+    public class AktywnoscService
     {
         private readonly ApplicationDbContext _context;
 
-        public AktywnośćService(ApplicationDbContext context)
+        public AktywnoscService(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public async Task<List<AktywnośćModel>> GetAktywnościAsync()
+        public async Task<List<AktywnoscModel>> GetAktywnościAsync()
         {
             return await _context.Aktywności.ToListAsync();
         }
 
-        public async Task AddAktywnośćAsync(AktywnośćModel aktywność)
+        public async Task AddAktywnośćAsync(AktywnoscModel aktywność)
         {
             _context.Aktywności.Add(aktywność);
             await _context.SaveChangesAsync();

@@ -21,7 +21,7 @@ namespace FGSZAMA
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
-            builder.Services.AddScoped<AktywnoœæService>();
+            builder.Services.AddScoped<AktywnoscService>();
 
             var app = builder.Build();
 

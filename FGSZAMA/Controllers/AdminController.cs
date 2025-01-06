@@ -19,9 +19,9 @@ namespace FGSZAMA.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly AktywnośćService _aktywnośćService;
+        private readonly AktywnoscService _aktywnośćService;
 
-        public AdminController(ApplicationDbContext context, UserManager<IdentityUser> userManager,AktywnośćService aktywnośćService)
+        public AdminController(ApplicationDbContext context, UserManager<IdentityUser> userManager,AktywnoscService aktywnośćService)
         {
             _context = context;
             _userManager = userManager;

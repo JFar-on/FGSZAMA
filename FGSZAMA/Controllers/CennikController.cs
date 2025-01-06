@@ -6,9 +6,9 @@ namespace FGSZAMA.Controllers
 {
     public class CennikController : Controller
     {
-        private readonly AktywnośćService _aktywnośćService;
+        private readonly AktywnoscService _aktywnośćService;
 
-        public CennikController(AktywnośćService aktywnośćService)
+        public CennikController(AktywnoscService aktywnośćService)
         {
             _aktywnośćService = aktywnośćService;
         }
@@ -16,7 +16,7 @@ namespace FGSZAMA.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                await _aktywnośćService.AddAktywnośćAsync(new AktywnośćModel
+                await _aktywnośćService.AddAktywnośćAsync(new AktywnoscModel
                 {
                     NazwaUżytkownika = User.Identity.Name,
                     DataAktywności = DateTime.Now,

@@ -1,6 +1,6 @@
 ﻿namespace FGSZAMA.Models
 {
-    public class AktywnośćModel
+    public class AktywnoscModel
     {
         public int Id { get; set; }
         public string NazwaUżytkownika { get; set; }
